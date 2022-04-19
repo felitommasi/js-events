@@ -1,6 +1,6 @@
 //nodos inputs
 const estacionPartidaInput = document.getElementById("estacionPartidaInput");
-const estacionDestinoInput = document.getElementById("estacionDestino");
+const estacionDestinoInput = document.getElementById("estacionDestinoInput");
 const valorPasajeInput = document.getElementById("valorPasajeInput");
 const nombreInput = document.getElementById("nombreInput");
 const numeroTarjetaInput = document.getElementById("numeroTarjetaInput");
@@ -36,46 +36,42 @@ function elegirEstacion(array) {
 
 		let btnAgregar = document.getElementById(`agregar${item.id}`);
 		btnAgregar.addEventListener("click", () => {
-			agregarEstacion(item.id);
-			console.log(estacionPartidaInput.value);
-			console.log(valorPasajeInput.value);
-
-			if (estacionPartidaInput.value != "") {
-				let btnAgregar = document.getElementById(`agregar${item.id}`);
-                btnAgregar.addEventListener("click", () => {
-                    agregarEstacionDos(item.id);
-                })
+			if (estacionPartidaInput.value === "") {
+				agregarEstacion(item.id);
+				console.log(estacionPartidaInput.value);
+				console.log(valorPasajeInput.value);
+			} 
+            if (estacionPartidaInput.value !== "") {
+                agregarEstacionDos(item.id);
 			}
 		});
-
 	});
 }
 
 function agregarEstacion(id) {
 	let agregarEstacionIda = arrayEstaciones.find((item) => item.id == id);
-	estacionPartidaInput.value = JSON.stringify(agregarEstacionIda.estacion);
-	valorPasajeInput.value = JSON.stringify(agregarEstacionIda.precio);
+    let selecEstacion = JSON.stringify(agregarEstacionIda.estacion)
+    let selecValor = JSON.stringify(agregarEstacionIda.precio);
+	estacionPartidaInput.value = selecEstacion;
+	valorPasajeInput.value = selecValor;
 }
 
 function agregarEstacionDos(id) {
-	let agregarEstacionDos = arrayEstaciones.find((item) => item.id == id);
-	estacionDestinoInput.value = JSON.stringify(agregarEstacionDos.estacion);
-	valorPasajeInput.value = JSON.stringify(agregarEstacionDos.precio);
-}
-
-/* function sumaPrecios(){
-    let sumaTotal = (val1, val2) =>{
-        return (JSON.stringify(agregarEstacionIda.precio)) + (JSON.stringify(agregarEstacionDos.precio));
+	let agregarEstacionVuelta = arrayEstaciones.find((item) => item.id == id);
+    let selecEstacionDos = JSON.stringify(agregarEstacionVuelta.estacion);
+    function valorDescuento() {
+        return (parseInt(JSON.stringify(agregarEstacionVuelta.precio)) * 0.75);
     }
-    console.log(sumaTotal);
+    estacionDestinoInput.value = selecEstacionDos;
+    valorPasajeInput.value = valorDescuento();
+    console.log(`el precio con descuento es${valorDescuento}`);
 }
-sumaPrecios(); */
 
-/* function agregarEstacionVuelta(id){
-    let agregarEstacionVuelta = arrayEstaciones.find(item => item.id == id);
-    estacionDestinoInput.value = JSON.stringify(agregarEstacionIda.estacion);
-}  */
+
+
+
+
 
 //logica simulador carga
 
-function cargarSaldo() {}
+//    function () { }
