@@ -1,5 +1,46 @@
-#selecEstaciones{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+* {
+  padding: 0;
+  margin: 0;
 }
+
+.mainContainer {
+  margin: 5rem;
+}
+.mainContainer .btn-outline-secondary {
+  margin-bottom: 0.7rem;
+  border-radius: 3px;
+}
+.mainContainer .card {
+  padding: 3rem 6rem 3rem 4rem;
+}
+.mainContainer .card .item-value-title {
+  padding: 0;
+  font-size: 2rem;
+}
+.mainContainer .card .input-group {
+  padding: 0;
+  margin: 1.5rem auto 0.3rem 0;
+}
+.mainContainer .card .input-group .btn {
+  margin: 0 1rem 2rem 0;
+  padding: 0.5rem 2rem;
+}
+.mainContainer .card label {
+  margin-top: 1rem;
+  padding: 0 0 0.5rem 0;
+}
+.mainContainer .card .btn-group {
+  margin-top: 2rem;
+  padding: 0;
+}
+.mainContainer .card .btn-group .btn {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  padding: 1rem 0;
+  margin-right: 1rem;
+  border: 0;
+  border-radius: 2rem;
+  width: 30px;
+}
+
+/*# sourceMappingURL=style.css.map */
