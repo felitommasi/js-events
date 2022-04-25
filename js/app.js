@@ -1,31 +1,76 @@
-//nodos inputs
-const estacionPartidaInput = document.getElementById("estacionPartidaInput");
-const estacionDestinoInput = document.getElementById("estacionDestinoInput");
-const valorPasajeInput = document.getElementById("valorPasajeInput");
-const nombreInput = document.getElementById("nombreInput");
-const numeroTarjetaInput = document.getElementById("numeroTarjetaInput");
+//get form elements
+window.addEventListener("load", () => {
+	const form = document.getElementById("form");
+	const tipoPasaje = document.getElementById("tipoPasaje");
+	const partida = document.getElementById("selectPartida");
+	const destino = document.getElementById("selectDestino");
+	const precioTotal = document.getElementById("precioTotalInput");
+	const btnComprar = document.getElementById("btnComprar");
+	const btnCancelar = document.getElementById("btnCancelar");
+	const inputs = document.getElementsByClassName("msjeError");
 
-//nodos selectores
-const selecPasajeUno = document.getElementById("selecPasajeUno");
-const selecPasajeDos = document.getElementById("selecPasajeDos");
+	form.addEventListener("submit", (e) => {
+		e.preventDefault();
+		validaCampos();
+	});
 
-//nodos botones
-const btnComprar = document.getElementById("btnComprar");
-const btnCancelar = document.getElementById("btnCancelar");
-const btnIngresar = document.getElementById("btnIngresar");
-const btnCargar = document.getElementById("btnCargar");
+	//validacion form
+	const validaCampos = () => {
+		//captura valores ingresados por el usuario
+		const tipoPasajeValor = tipoPasaje.value;
+		const partidaValor = partida.value;
+		const destinoValor = destino.value; 
 
-//variables globales de datos elegidos por el usuario
-let selecEstacion;
-let selecEstacionDos;
+		//validar tipo pasaje
+		if (parseInt(tipoPasaje.value) === 0) {
+			validError();
+		} else {
+			validOk();
+		}
 
-/* //contador para relleno automatico
-//valor contador inicial
-const contador = 0;
-const btnEstacion = document.querySelectorAll
- */
+		//validar partida
+		if (parseInt(partida.value) === 0) {
+			validError();
+		} else {
+			validOk();
+		}
 
-//logica simulador pasaje
+		//validar destino
+		if (parseInt(destino.value) === 0) {
+			validError();
+		} else {
+			validOk();
+		}
+	};
+
+	//msje en caso de error
+	const validError = () => {
+	let formControl = document.querySelectorAll(".msjeError");
+	for(const el of formControl){
+		el.innerHTML = "Por favor completa este campo";
+	}
+	
+
+	console.log('error');
+	};
+
+	//msje en caso de correcto
+	const validOk = () => {
+		
+		//formControl.className = "form-control ok"
+
+		console.log('ok');
+	};
+});
+
+//listado viajes realizados
+const arrayViajesRealizados = [];
+
+//selector tipo de pasaje
+
+//aplicacion descuento en caso de seleccionar ida y vuelta
+
+/* //logica simulador pasaje
 elegirEstacion(arrayEstaciones);
 
 //seleccionar estaciones
@@ -87,7 +132,7 @@ function agregarEstacionDos(id) {
 	estacionDestinoInput.value = selecEstacionDos;
 	valorPasajeInput.value = selecValorSuma (valorAnterior, agregarEstacionVuelta.precio);
 }
-
+ */
 
 //aplicar descuento "ida y vuelta" al valor total
 
