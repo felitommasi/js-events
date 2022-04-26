@@ -9,43 +9,15 @@ window.addEventListener("load", () => {
 	const btnCancelar = document.getElementById("btnCancelar");
 	const inputs = document.getElementsByClassName("msjeError");
 
+	const valorPartida = parseInt(partida.value);
+	const valorDestino = parseInt(destino.value);
+
 	//!listado viajes realizados
 	const arrayViajesRealizados = [];
-
-	form.addEventListener("submit", (e) => {
-		e.preventDefault();
-		validaCampos();
-	});
-
-	//!validacion form
-	const validaCampos = () => {
-
-		//validar tipo pasaje
-		if (parseInt(tipoPasaje.value) === 0) {
-			validError();
-		} else {
-			validOk();
-			valorPasaje();
-			console.log(tipoPasaje.value);
-		}
-
-		//validar partida
-		if (parseInt(partida.value) === 0) {
-			validError();
-		} else {
-			validOk();
-			valorPasaje();
-			console.log(partida.value);
-		}
-
-		//validar destino
-		if (parseInt(destino.value) === 0) {
-			validError();
-		} else {
-			validOk();
-			valorPasaje();
-			console.log(destino.value);
-		}
+	
+	//msje en caso de correcto
+	const validOk = () => {
+		console.log("ok");
 	};
 
 	//msje en caso de error
@@ -56,37 +28,57 @@ window.addEventListener("load", () => {
 		}
 		console.log("error");
 	};
+	//!validacion form
+	const validaCampos = () => {
 
-	//msje en caso de correcto
-	const validOk = () => {
-		console.log("ok");
+		//validar tipo pasaje
+		if (parseInt(tipoPasaje.value) === 0) {
+			validError();
+		} else {
+			validOk();
+		
+			console.log(tipoPasaje.value);
+		}
+
+		//validar partida
+		if (parseInt(partida.value) === 0) {
+			validError();
+		} else {
+			validOk();
+			//valorPasaje();
+			console.log(partida.value);
+		}
+
+		//validar destino
+		if (parseInt(destino.value) === 0) {
+			validError();
+		} else {
+			validOk();
+			//valorPasaje();
+			console.log(destino.value);
+		}
 	};
 
-
-	//!comparar input con array para conseguir valor pasaje
-	const valorPartida = parseInt(partida.value);
-	const valorDestino = parseInt(destino.value);
-	let seccionDestino;
-	let seccionPartida; 
-	console.log(valorPartida);
-	console.log(valorDestino);
-	console.log(seccionPartida);
-	console.log(seccionDestino);
-
-	for (let el = 0; el < arrayEstaciones.length; el++) {
-		const id = arrayEstaciones[el].id;
+	const obtenerValorBoleto =(inicio,fin)=>{
+		const recorrido = arrayEstaciones.slice(inicio,fin).length * 10
 		
-		//determinar seccion estacion partida
-		if(valorPartida == id){
-			return seccionPartida = (arrayEstaciones[el].seccion);
-		}
-		if(valorDestino == id){
-			return seccionDestino = (arrayEstaciones[el].seccion);
-			
-		}
-	
-	
-	} 	
-	
-});
 
+	if (parseInt(tipoPasaje.value) === 1) {
+			let valorRecorrido = recorrido * 1;
+			console.log('valor del recorrido ida :', valorRecorrido) ;
+		} else if (parseInt(tipoPasaje.value) === 2) {
+			let valorRecorrido = recorrido * 2;
+			let idaYvuelta = valorRecorrido * 0.25;
+			console.log('valor del recorrido ida y vuelta :',idaYvuelta)
+		}
+
+	}
+
+	form.addEventListener("submit", (e) => {
+		e.preventDefault();
+		validaCampos();
+		obtenerValorBoleto(parseInt(partida.value), parseInt(destino.value));
+	
+	});
+
+});
