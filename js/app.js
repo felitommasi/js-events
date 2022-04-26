@@ -66,18 +66,27 @@ window.addEventListener("load", () => {
 	//!comparar input con array para conseguir valor pasaje
 	const valorPartida = parseInt(partida.value);
 	const valorDestino = parseInt(destino.value);
+	let seccionDestino;
+	let seccionPartida; 
 	console.log(valorPartida);
 	console.log(valorDestino);
+	console.log(seccionPartida);
+	console.log(seccionDestino);
 
-	//console.log(arrayEstaciones[1].seccion)
-
-/* 	for(let id of arrayEstaciones){
-		console.log(id);
-	} */
 	for (let el = 0; el < arrayEstaciones.length; el++) {
-		const element = arrayEstaciones[el].seccion;
-		console.log(element);
-	} 
-
+		const id = arrayEstaciones[el].id;
+		
+		//determinar seccion estacion partida
+		if(valorPartida == id){
+			return seccionPartida = (arrayEstaciones[el].seccion);
+		}
+		if(valorDestino == id){
+			return seccionDestino = (arrayEstaciones[el].seccion);
+			
+		}
+	
+	
+	} 	
+	
 });
 
