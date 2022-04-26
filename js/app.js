@@ -11,9 +11,6 @@ window.addEventListener("load", () => {
 
 	const valorPartida = parseInt(partida.value);
 	const valorDestino = parseInt(destino.value);
-
-	//!listado viajes realizados
-	const arrayViajesRealizados = [];
 	
 	//msje en caso de correcto
 	const validOk = () => {
@@ -75,11 +72,11 @@ window.addEventListener("load", () => {
 		e.preventDefault();
 		validaCampos();
 		obtenerValorBoleto(parseInt(partida.value), parseInt(destino.value));
+	
+		btnCalcular.addEventListener("click", ()=>{
+			btnCalcular.style.backgroundColor = "green";
+			btnCalcular.innerText = "Comprar";
+		})
 	});
-
-	btnCalcular.addEventListener("click", ()=>{
-		btnCalcular.style.backgroundColor = "green";
-		btnCalcular.innerText = "Comprar";
-	})
-
+	
 });
