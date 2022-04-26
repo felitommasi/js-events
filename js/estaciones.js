@@ -17,7 +17,3 @@ const arrayEstaciones = [
     {id: 15, seccion: 3, estacion: "A. KORN"},
 ];
 
-//valor seccion 1 = $50
-//valor seccion 2 = $70
-//valor seccion 3 = $90
-
