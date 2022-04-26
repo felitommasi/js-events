@@ -11,7 +11,7 @@ window.addEventListener("load", () => {
 
 	const valorPartida = parseInt(partida.value);
 	const valorDestino = parseInt(destino.value);
-	
+
 	//msje en caso de correcto
 	const validOk = () => {
 		console.log("ok");
@@ -27,7 +27,6 @@ window.addEventListener("load", () => {
 	};
 	//!validacion form
 	const validaCampos = () => {
-
 		//validar tipo pasaje
 		if (parseInt(tipoPasaje.value) === 0) {
 			validError();
@@ -53,30 +52,68 @@ window.addEventListener("load", () => {
 		}
 	};
 
-	const obtenerValorBoleto =(inicio,fin)=>{
-		const recorrido = arrayEstaciones.slice(inicio,fin).length * 10;
-		
+	const obtenerValorBoleto = (inicio, fin) => {
+		const recorrido = arrayEstaciones.slice(inicio, fin).length * 10;
 
-	if (parseInt(tipoPasaje.value) === 1) {
+		if (parseInt(tipoPasaje.value) === 1) {
 			let valorRecorrido = recorrido * 1;
-			precioTotalInput.value = (`$${valorRecorrido}`);
+			precioTotalInput.value = `$${valorRecorrido}`;
 		} else if (parseInt(tipoPasaje.value) === 2) {
-			let idaYvuelta = (recorrido * 2) * 0.75;
-			precioTotalInput.value = (`$${idaYvuelta}`);
+			let idaYvuelta = recorrido * 2 * 0.75;
+			precioTotalInput.value = `$${idaYvuelta}`;
 		}
-	}
+	};
 
-
-
+	//ejecutar funciones cuando se da submit
 	form.addEventListener("submit", (e) => {
 		e.preventDefault();
+
+		//validacion campos
 		validaCampos();
+
+		//calcular valor pasaje
 		obtenerValorBoleto(parseInt(partida.value), parseInt(destino.value));
-	
-		btnCalcular.addEventListener("click", ()=>{
+		btnCalcular.addEventListener("click", () => {
 			btnCalcular.style.backgroundColor = "green";
 			btnCalcular.innerText = "Comprar";
-		})
+		});
+
+		//obtener valores del form para agregar al historial
+		function obtenerEstacionPartida() {
+			let agregarPartida;
+
+			for (let id = 0; id < arrayEstaciones.length; id++) {
+				const estacion = arrayEstaciones[id].id;
+
+				if (estacion == partida.value) {
+					agregarPartida = arrayEstaciones[id].estacion;
+					console.log(agregarPartida);
+					arrayViajesRealizados.push(agregarPartida);
+				}
+			}
+		}
+
+		function obtenerEstacionDestino() {
+			let agregarDestino;
+
+			for (let id = 0; id < arrayEstaciones.length; id++) {
+				const estacion2 = arrayEstaciones[id].id;
+
+				if (estacion2 == destino.value) {
+					agregarDestino = arrayEstaciones[id].estacion;
+					console.log(agregarDestino);
+					arrayViajesRealizados.push(agregarDestino);
+				}
+			}
+		}
+
+		//comprobacion por consola de valores obtenidos
+		obtenerEstacionPartida();
+		obtenerEstacionDestino();
+		console.log(precioTotal.value);
+		console.log(arrayViajesRealizados);
+
+		//mostrar en el historial
+		
 	});
-	
 });
