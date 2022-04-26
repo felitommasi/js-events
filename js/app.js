@@ -5,7 +5,7 @@ window.addEventListener("load", () => {
 	const partida = document.getElementById("selectPartida");
 	const destino = document.getElementById("selectDestino");
 	const precioTotal = document.getElementById("precioTotalInput");
-	const btnComprar = document.getElementById("btnComprar");
+	const btnCalcular = document.getElementById("btnCalcular");
 	const btnCancelar = document.getElementById("btnCancelar");
 	const inputs = document.getElementsByClassName("msjeError");
 
@@ -36,7 +36,6 @@ window.addEventListener("load", () => {
 			validError();
 		} else {
 			validOk();
-		
 			console.log(tipoPasaje.value);
 		}
 
@@ -45,7 +44,6 @@ window.addEventListener("load", () => {
 			validError();
 		} else {
 			validOk();
-			//valorPasaje();
 			console.log(partida.value);
 		}
 
@@ -54,31 +52,34 @@ window.addEventListener("load", () => {
 			validError();
 		} else {
 			validOk();
-			//valorPasaje();
 			console.log(destino.value);
 		}
 	};
 
 	const obtenerValorBoleto =(inicio,fin)=>{
-		const recorrido = arrayEstaciones.slice(inicio,fin).length * 10
+		const recorrido = arrayEstaciones.slice(inicio,fin).length * 10;
 		
 
 	if (parseInt(tipoPasaje.value) === 1) {
 			let valorRecorrido = recorrido * 1;
-			console.log('valor del recorrido ida :', valorRecorrido) ;
+			precioTotalInput.value = (`$${valorRecorrido}`);
 		} else if (parseInt(tipoPasaje.value) === 2) {
-			let valorRecorrido = recorrido * 2;
-			let idaYvuelta = valorRecorrido * 0.25;
-			console.log('valor del recorrido ida y vuelta :',idaYvuelta)
+			let idaYvuelta = (recorrido * 2) * 0.75;
+			precioTotalInput.value = (`$${idaYvuelta}`);
 		}
-
 	}
+
+
 
 	form.addEventListener("submit", (e) => {
 		e.preventDefault();
 		validaCampos();
 		obtenerValorBoleto(parseInt(partida.value), parseInt(destino.value));
-	
 	});
+
+	btnCalcular.addEventListener("click", ()=>{
+		btnCalcular.style.backgroundColor = "green";
+		btnCalcular.innerText = "Comprar";
+	})
 
 });
