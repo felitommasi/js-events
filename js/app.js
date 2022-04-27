@@ -28,28 +28,32 @@ window.addEventListener("load", () => {
 	//!validacion form
 	const validaCampos = () => {
 		//validar tipo pasaje
-		if (parseInt(tipoPasaje.value) === 0) {
+		parseInt(tipoPasaje.value) === 0 ? validError() : validOk();
+
+		/* 		if (parseInt(tipoPasaje.value) === 0) {
 			validError();
 		} else {
 			validOk();
 			console.log(tipoPasaje.value);
-		}
+		} */
 
 		//validar partida
-		if (parseInt(partida.value) === 0) {
+		parseInt(partida.value) === 0 ? validError() : validOk();
+		/* 		if (parseInt(partida.value) === 0) {
 			validError();
 		} else {
 			validOk();
 			console.log(partida.value);
-		}
+		} */
 
 		//validar destino
-		if (parseInt(destino.value) === 0) {
+		parseInt(destino.value) === 0 ? validError() : validOk();
+		/* 		if (parseInt(destino.value) === 0) {
 			validError();
 		} else {
 			validOk();
 			console.log(destino.value);
-		}
+		} */
 	};
 
 	const obtenerValorBoleto = (inicio, fin) => {
@@ -65,17 +69,32 @@ window.addEventListener("load", () => {
 	};
 
 	//ejecutar funciones cuando se da submit
+	//calcular valor pasaje
 	form.addEventListener("submit", (e) => {
 		e.preventDefault();
 
 		//validacion campos
 		validaCampos();
 
-		//calcular valor pasaje
+		//cambio de estilo btn
+		btnCalcular.style.backgroundColor = "green";
+		btnCalcular.innerText = "Comprar";
+
+		//comprar pasaje y confirmacion
 		obtenerValorBoleto(parseInt(partida.value), parseInt(destino.value));
 		btnCalcular.addEventListener("click", () => {
-			btnCalcular.style.backgroundColor = "green";
-			btnCalcular.innerText = "Comprar";
+			Swal.fire({
+				position: "top-end",
+				icon: "success",
+				title: "Listo, ¡buen viaje!",
+				showConfirmButton: false,
+				timer: 1500,
+			});
+			//vaciar inputs
+			tipoPasaje.value = "";
+			partida.value = "";
+			destino.value = "";
+			precioTotalInput.value = "";
 		});
 
 		//obtener valores del form para agregar al historial
@@ -114,6 +133,5 @@ window.addEventListener("load", () => {
 		console.log(arrayViajesRealizados);
 
 		//mostrar en el historial
-		
 	});
 });
