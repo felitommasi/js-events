@@ -1,57 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link
-			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-			rel="stylesheet"
-			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-			crossorigin="anonymous"
-		/>
-		<link rel="stylesheet" href="./css/style.css" />
-		<title>Document</title>
-	</head>
-	<body>
-		<header>
-			<div class="row">
-				<div class="col-3">
-					<a href="index.html" class="btn btn-primary p-3" role="button"
-						>Volver al inicio</a
-					>
-				</div>
-				<div class="col-3">
-					<a href="carga.html" class="btn btn-primary p-3" role="button"
-						>Cargar saldo</a
-					>
-				</div>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+	<link rel="stylesheet" href="./css/style.css" />
+	<title>Document</title>
+</head>
+
+<body>
+	<header>
+		<div class="row">
+			<div class="col-3">
+				<a href="index.html" class="btn btn-primary p-3" role="button">Volver al inicio</a>
 			</div>
-		</header>
-		<!--INICIO CARD-->
-		<div class="mainContainer">
-			<div class="row">
-				<div class="container card shadow col-10">
+			<div class="col-3">
+				<a href="carga.html" class="btn btn-primary p-3" role="button">Cargar saldo</a>
+			</div>
+			<div class="col-3">
+				<a href="compra.html" class="btn btn-primary p-3" role="button">Comprar pasaje</a>
+			</div>
+		</div>
+	</header>
+	<!--INICIO CARD-->
+	<div class="mainContainer">
+		<div class="row">
+			<div class="container card shadow col-10">
 					<div class="item-value-title">
 						<strong>Historial de viajes</strong>
 					</div>
+	<!--INICIO CARD INTERIOR-->
 					<div class="container card shadow-sm row">
-						<div class="col-4">Partida:</div>
-						<div class="col-4">Destino:</div>
-						<div class="col-4">Valor del viaje:</div>
+						<div class="col-sm">
+							<p><strong>Partida:</strong></p>
+							<p class="textoHistorial"></p>
+						</div>
+						<div class="col-sm">
+							<p><strong>Destino:</strong></p>
+							<p class="textoHistorial"></p>
+						</div>
+						<div class="col-sm">
+							<p><strong>Valor del viaje:</strong></p>
+							<p class="textoHistorial"></p>
+						</div>
 					</div>
-				</div>
+	<!--FIN CARD INTERIOR-->
 			</div>
 		</div>
+	</div>
 
-		<!--scripts-->
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-			crossorigin="anonymous"
-		></script>
-		<script src="./js/estaciones.js"></script>
-		<script src="./js/app.js"></script>
-        <script src="./js/historial.js"></script>
-	</body>
+	<!--scripts-->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+	<script src="./js/estaciones.js"></script>
+	<script src="./js/app.js"></script>
+	<script src="./js/historial.js"></script>
+</body>
+
 </html>

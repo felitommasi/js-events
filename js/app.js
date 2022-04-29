@@ -1,6 +1,6 @@
 //!get form elements
 window.addEventListener("load", () => {
-	const form = document.getElementById("form");
+	const form = document.getElementById("formNuevoViaje");
 	const tipoPasaje = document.getElementById("tipoPasaje");
 	const partida = document.getElementById("selectPartida");
 	const destino = document.getElementById("selectDestino");
@@ -8,16 +8,16 @@ window.addEventListener("load", () => {
 	const btnCalcular = document.getElementById("btnCalcular");
 	const btnCancelar = document.getElementById("btnCancelar");
 	const inputs = document.getElementsByClassName("msjeError");
+	
+	//array para guardar viajes
+	const arrayViajesRealizados = [];
 
-	const valorPartida = parseInt(partida.value);
-	const valorDestino = parseInt(destino.value);
-
-	//msje en caso de correcto
+	//msje por pantalla en caso de correcto
 	const validOk = () => {
 		console.log("ok");
 	};
 
-	//msje en caso de error
+	//msje por pantalla en caso de error
 	const validError = () => {
 		let formControl = document.querySelectorAll(".msjeError");
 		for (const el of formControl) {
@@ -25,35 +25,20 @@ window.addEventListener("load", () => {
 		}
 		console.log("error");
 	};
+
 	//!validacion form
 	const validaCampos = () => {
+		const valorPartida = parseInt(partida.value);
+		const valorDestino = parseInt(destino.value);
+		
 		//validar tipo pasaje
 		parseInt(tipoPasaje.value) === 0 ? validError() : validOk();
 
-		/* 		if (parseInt(tipoPasaje.value) === 0) {
-			validError();
-		} else {
-			validOk();
-			console.log(tipoPasaje.value);
-		} */
-
 		//validar partida
-		parseInt(partida.value) === 0 ? validError() : validOk();
-		/* 		if (parseInt(partida.value) === 0) {
-			validError();
-		} else {
-			validOk();
-			console.log(partida.value);
-		} */
-
+		valorPartida === 0 ? validError() : validOk();
+		
 		//validar destino
-		parseInt(destino.value) === 0 ? validError() : validOk();
-		/* 		if (parseInt(destino.value) === 0) {
-			validError();
-		} else {
-			validOk();
-			console.log(destino.value);
-		} */
+		valorDestino === 0 ? validError() : validOk();
 	};
 
 	const obtenerValorBoleto = (inicio, fin) => {
@@ -97,41 +82,39 @@ window.addEventListener("load", () => {
 			precioTotalInput.value = "";
 		});
 
+	
 		//obtener valores del form para agregar al historial
-		function obtenerEstacionPartida() {
+		function obtenerValoresInputs() {
 			let agregarPartida;
+			let agregarDestino;
 
 			for (let id = 0; id < arrayEstaciones.length; id++) {
 				const estacion = arrayEstaciones[id].id;
 
 				if (estacion == partida.value) {
 					agregarPartida = arrayEstaciones[id].estacion;
-					console.log(agregarPartida);
-					arrayViajesRealizados.push(agregarPartida);
 				}
 			}
-		}
-
-		function obtenerEstacionDestino() {
-			let agregarDestino;
 
 			for (let id = 0; id < arrayEstaciones.length; id++) {
 				const estacion2 = arrayEstaciones[id].id;
 
 				if (estacion2 == destino.value) {
 					agregarDestino = arrayEstaciones[id].estacion;
-					console.log(agregarDestino);
-					arrayViajesRealizados.push(agregarDestino);
 				}
 			}
+
+		arrayViajesRealizados.push(agregarPartida);
+		arrayViajesRealizados.push(agregarDestino);
+		
+		console.log(arrayViajesRealizados)
+
 		}
+	
+		obtenerValoresInputs();
+		//crear viaje para añadir al historial
+		const viajes = new Viaje(partida, destino, valor);
 
-		//comprobacion por consola de valores obtenidos
-		obtenerEstacionPartida();
-		obtenerEstacionDestino();
-		console.log(precioTotal.value);
-		console.log(arrayViajesRealizados);
-
-		//mostrar en el historial
 	});
 });
+
