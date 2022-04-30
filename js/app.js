@@ -93,8 +93,10 @@ form.addEventListener("submit", (e) => {
 
 	//pushear al array
 	arrayViajesRealizados.push(viaje);
-	console.log(arrayViajesRealizados);
+	//console.log(arrayViajesRealizados);
 
+	//guardar el array en localstorage y convertirlo en JSON
+	localStorage.setItem("arrayViajesRealizados", JSON.stringify(arrayViajesRealizados));
 
 	//cambio de estilo btn
 	btnCalcular.style.backgroundColor = "green";
