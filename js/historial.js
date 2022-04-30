@@ -1,7 +1,10 @@
 //!constructor viajes realizados
+//guardar viajes realizados
+const arrayViajesRealizados = [];
 
-class Historial{
-    constructor(partida, destino, valor){
+class Viaje{
+    constructor(pasaje, partida, destino, valor){
+        this.pasaje = pasaje;
         this.partida = partida;
         this.destino = destino;
         this.valor = valor;

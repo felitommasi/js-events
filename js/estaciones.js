@@ -1,5 +1,4 @@
 const arrayEstaciones = [
-    {id: 0, seccion: NaN, estacion: NaN},
     {id: 1, seccion: 1, estacion: "PLAZA CONSTITUCION"},
     {id: 2, seccion: 1, estacion: "HIPOLITO YRIGOYEN"},
     {id: 3, seccion: 1, estacion: "D. SANTILLAN Y M. KOSTEKI"},
@@ -16,4 +15,6 @@ const arrayEstaciones = [
     {id: 14, seccion: 3, estacion: "GURENICA"},
     {id: 15, seccion: 3, estacion: "A. KORN"},
 ];
+
+
 
