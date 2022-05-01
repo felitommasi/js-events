@@ -35,34 +35,69 @@ function validaCampos() {
 	selecDestino.value === 0 ? validError() : validOk();
 }
 
+//funcion pasaje solo ida
 function obtenerValorBoleto() {
-	if (selecPartida.value == 1 && selecDestino.value == 1) {
+	if ((selecPartida.value == 1 && selecDestino.value == 1) && (selecPasaje.value == 1)){
 		precioTotalInput.value = 50;
 		console.log(`el valor es 50`);
-	} else if (selecPartida.value == 1 && selecDestino.value == 2) {
+	} else if ((selecPartida.value == 1 && selecDestino.value == 2) && (selecPasaje.value == 1)){
 		precioTotalInput.value = 70;
 		console.log(`el valor es 70`);
-	} else if (selecPartida.value == 1 && selecDestino.value == 3) {
+	} else if ((selecPartida.value == 1 && selecDestino.value == 3) && (selecPasaje.value == 1)){
 		precioTotalInput.value = 90;
 		console.log(`el valor es 90`);
-	} else if (selecPartida.value == 2 && selecDestino.value == 1) {
+	} else if ((selecPartida.value == 2 && selecDestino.value == 1) && (selecPasaje.value == 1)){
 		precioTotalInput.value = 70;
 		console.log(`el valor es 70`);
-	} else if (selecPartida.value == 2 && selecDestino.value == 2) {
+	} else if ((selecPartida.value == 2 && selecDestino.value == 2) && (selecPasaje.value == 1)){
 		precioTotalInput.value = 50;
 		console.log(`el valor es 50`);
-	} else if (selecPartida.value == 2 && selecDestino.value == 3) {
+	} else if ((selecPartida.value == 2 && selecDestino.value == 3) && (selecPasaje.value == 1)){
 		precioTotalInput.value = 70;
 		console.log(`el valor es 70`);
 	} else if (selecPartida.value == 3 && selecDestino.value == 1) {
 		precioTotalInput.value = 90;
 		console.log(`el valor es 90`);
-	} else if (selecPartida.value == 3 && selecDestino.value == 2) {
+	} else if ((selecPartida.value == 3 && selecDestino.value == 2) && (selecPasaje.value == 1)){
 		precioTotalInput.value = 70;
 		console.log(`el valor es 70`);
-	} else if (selecPartida.value == 3 && selecDestino.value == 3) {
+	} else if ((selecPartida.value == 3 && selecDestino.value == 3) && (selecPasaje.value == 1)){
 		precioTotalInput.value = 50;
 		console.log(`el valor es 50`);
+	} else {
+		console.log(`error`);
+	}
+}
+
+//funcion pasaje ida y vuelta (pasaje de vuelta 25% de descuento)
+function obtenerIdaYVuelta(){
+	if ((selecPartida.value == 1 && selecDestino.value == 1) && (selecPasaje.value == 2)){
+		precioTotalInput.value = 50 + (50*0.75);
+		console.log(precioTotalInput.value);
+	} else if ((selecPartida.value == 1 && selecDestino.value == 2) && (selecPasaje.value == 2)){
+		precioTotalInput.value = 70 + (70*0.75);
+		console.log(precioTotalInput.value);
+	} else if ((selecPartida.value == 1 && selecDestino.value == 3) && (selecPasaje.value == 2)){
+		precioTotalInput.value = 90 + (90*0.75);
+		console.log(precioTotalInput.value);
+	} else if ((selecPartida.value == 2 && selecDestino.value == 1) && (selecPasaje.value == 2)){
+		precioTotalInput.value = 70 + (70*0.75);
+		console.log(precioTotalInput.value);
+	} else if ((selecPartida.value == 2 && selecDestino.value == 2) && (selecPasaje.value == 2)){
+		precioTotalInput.value = 50 + (50*0.75);
+		console.log(precioTotalInput.value);
+	} else if ((selecPartida.value == 2 && selecDestino.value == 3) && (selecPasaje.value == 2)){
+		precioTotalInput.value = 70 + (70*0.75);
+		console.log(precioTotalInput.value);
+	} else if ((selecPartida.value == 3 && selecDestino.value == 1) && (selecPasaje.value == 2)){
+		precioTotalInput.value = 90 + (90*0.75);
+		console.log(precioTotalInput.value);
+	} else if ((selecPartida.value == 3 && selecDestino.value == 2) && (selecPasaje.value == 2)){
+		precioTotalInput.value = 70 + (70*0.75);
+		console.log(precioTotalInput.value);
+	} else if ((selecPartida.value == 3 && selecDestino.value == 3) && (selecPasaje.value == 2)){
+		precioTotalInput.value = 50 + (50*0.75);
+		console.log(precioTotalInput.value);
 	} else {
 		console.log(`error`);
 	}
@@ -78,11 +113,16 @@ form.addEventListener("submit", (e) => {
 
 	//validacion campos
 	validaCampos();
-
+	
 	//mostrar valor boleto en pantalla
-	obtenerValorBoleto();
+	if(selecPasaje.value == 1){
+		obtenerValorBoleto();
+	} else if(selecPasaje.value == 2){
+		obtenerIdaYVuelta();
+	} 
+	
 
-	//TODO: obtener texto de los select para mostrar en pantalla en historial
+	//obtener texto de los select para mostrar en pantalla en historial
 	const pasaje = selecPasaje.options[selecPasaje.selectedIndex].text;
 	const partida = selecPartida.options[selecPartida.selectedIndex].text;
 	const destino = selecDestino.options[selecDestino.selectedIndex].text;

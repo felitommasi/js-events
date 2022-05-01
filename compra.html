@@ -1,148 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link
-			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-			rel="stylesheet"
-			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-			crossorigin="anonymous"
-		/>
-		<link rel="stylesheet" href="./css/style.css" />
-		<title>Compra</title>
-	</head>
-	<body>
-		<header>
-			<div class="row">
-				<div class="col-3">
-					<a href="index.html" class="btn btn-primary p-3" role="button"
-						>Volver al inicio</a
-					>
-				</div>
-				<div class="col-3">
-					<a href="carga.html" class="btn btn-primary p-3" role="button"
-						>Cargar saldo</a
-					>
-				</div>
-			</div>
-		</header>		  
-		<div class="mainContainer">
-			<div class="row">
-				<div class="container card shadow col-10">
-						<form class="row" id="formNuevoViaje">
-							<!--calculadora compra pasajes-->
-							<div class="col">
-								<div class="row">
-									<div class="item-value-title">
-										<strong>Comprar pasaje</strong>
-									</div>
-									<p class="text-muted">Comprando ida y vuelta, obtenés 25% de descuento en el pasaje de vuelta.</p>
-								</div>
-								<div class="row">
-									<div class="row">
-										<div class="input-group mb-3 input">
-											<div class="input-group-prepend">
-												<label class="input-group-text" for="inputGroupSelect01"
-													>Tipo de pasaje</label
-												>
-											</div>
-											<select class="custom-select select" id="selecPasaje">
-												<option selected value="0">Elegir tipo de pasaje...</option>
-												<option value="1">Sólo ida</option>
-												<option value="2">Ida y vuelta</option>
-											</select>
-											<p class="msjeError"></p>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="input-group mb-3 input">
-										<div class="input-group-prepend">
-											<label class="input-group-text" for="inputGroupSelect01"
-												>Partida</label
-											>
-										</div>
-										<select class="custom-select select" id="selectPartida">
-											<option selected value="0">Elegir estación...</option>
-											<option value="1">Plaza Constitución</option>
-											<option value="1">H. Yrigoyen</option>
-											<option value="1">D. Santillan y M. Kosteki</option>
-											<option value="1">Gerli</option>
-											<option value="1">Lanús</option>
-											<option value="1">Escalada</option>
-											<option value="2">Banfield</option>
-											<option value="2">Lomas de Zamora</option>
-											<option value="2">Temperley</option>
-											<option value="2">Adrogué</option>
-											<option value="2">Burzaco</option>
-											<option value="2">Longchamps</option>
-											<option value="3">Glew</option>
-											<option value="3">Guernica</option>
-											<option value="3">A. Korn</option>
-										</select>
-										<p class="msjeError"></p>
-									</div>
-								</div>
-								<div class="row">
-									<div class="input-group mb-3 input">
-										<div class="input-group-prepend">
-											<label class="input-group-text" for="inputGroupSelect01"
-												>Destino</label
-											>
-										</div>
-										<select class="custom-select select" id="selectDestino">
-											<option selected value="0">Elegir estación...</option>
-											<option value="1">Plaza Constitución</option>
-											<option value="1">H. Yrigoyen</option>
-											<option value="1">D. Santillan y M. Kosteki</option>
-											<option value="1">Gerli</option>
-											<option value="1">Lanús</option>
-											<option value="1">Escalada</option>
-											<option value="2">Banfield</option>
-											<option value="2">Lomas de Zamora</option>
-											<option value="2">Temperley</option>
-											<option value="2">Adrogué</option>
-											<option value="2">Burzaco</option>
-											<option value="2">Longchamps</option>
-											<option value="3">Glew</option>
-											<option value="3">Guernica</option>
-											<option value="3">A. Korn</option>
-										</select>
-										<p class="msjeError"></p>
-									</div>
-								</div>
 
-								<div class="row">
-									<label for="exampleInputEmail1">Precio total</label>
-									<input
-										type="text"
-										class="form-control"
-										id="precioTotalInput"
-										placeholder="$00,00"
-									/>
-								</div>
-								<div class="row">
-									<div class="btn-group">
-										<button type="submit" class="btn btn-primary" id="btnCalcular">Calcular precio</button>
-										<button type="reset" class="btn btn-danger" id="btnCancelar">Cancelar</button>
-									</div>
-								</div>
-							</div>
-						</form>
-				</div>
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+	<link rel="stylesheet" href="./css/style.css" />
+	<title>Compra</title>
+</head>
+
+<body>
+	<header>
+		<div class="row">
+			<div class="col-3">
+				<a href="index.html" class="btn btn-primary p-3" role="button">Volver al inicio</a>
 			</div>
+			<div class="col-3">
+				<a href="carga.html" class="btn btn-primary p-3" role="button">Cargar saldo</a>
 			</div>
 		</div>
+	</header>
+	<div class="mainContainer">
+		<div class="row">
+			<div class="container card shadow col-10">
+				<form class="row" id="formNuevoViaje">
+					<!--calculadora compra pasajes-->
+					<div class="col">
+						<div class="row">
+							<div class="item-value-title">
+								<strong>Comprar pasaje</strong>
+							</div>
+							<p class="text-muted">Comprando ida y vuelta, obtenés 25% de descuento en el pasaje de
+								vuelta.</p>
+						</div>
+						<div class="row">
+							<div class="row">
+								<div class="input-group mb-3 input">
+									<div class="input-group-prepend">
+										<label class="input-group-text" for="inputGroupSelect01">Tipo de pasaje</label>
+									</div>
+									<select class="custom-select select" id="selecPasaje">
+										<option selected value="0">Elegir tipo de pasaje...</option>
+										<option value="1">Sólo ida</option>
+										<option value="2">Ida y vuelta</option>
+									</select>
+									<p class="msjeError"></p>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-group mb-3 input">
+								<div class="input-group-prepend">
+									<label class="input-group-text" for="inputGroupSelect01">Partida</label>
+								</div>
+								<select class="custom-select select" id="selectPartida">
+									<option selected value="0">Elegir estación...</option>
+									<option value="1">Plaza Constitución</option>
+									<option value="1">H. Yrigoyen</option>
+									<option value="1">D. Santillan y M. Kosteki</option>
+									<option value="1">Gerli</option>
+									<option value="1">Lanús</option>
+									<option value="1">Escalada</option>
+									<option value="2">Banfield</option>
+									<option value="2">Lomas de Zamora</option>
+									<option value="2">Temperley</option>
+									<option value="2">Adrogué</option>
+									<option value="2">Burzaco</option>
+									<option value="2">Longchamps</option>
+									<option value="3">Glew</option>
+									<option value="3">Guernica</option>
+									<option value="3">A. Korn</option>
+								</select>
+								<p class="msjeError"></p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-group mb-3 input">
+								<div class="input-group-prepend">
+									<label class="input-group-text" for="inputGroupSelect01">Destino</label>
+								</div>
+								<select class="custom-select select" id="selectDestino">
+									<option selected value="0">Elegir estación...</option>
+									<option value="1">Plaza Constitución</option>
+									<option value="1">H. Yrigoyen</option>
+									<option value="1">D. Santillan y M. Kosteki</option>
+									<option value="1">Gerli</option>
+									<option value="1">Lanús</option>
+									<option value="1">Escalada</option>
+									<option value="2">Banfield</option>
+									<option value="2">Lomas de Zamora</option>
+									<option value="2">Temperley</option>
+									<option value="2">Adrogué</option>
+									<option value="2">Burzaco</option>
+									<option value="2">Longchamps</option>
+									<option value="3">Glew</option>
+									<option value="3">Guernica</option>
+									<option value="3">A. Korn</option>
+								</select>
+								<p class="msjeError"></p>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="input-group mb-2">
+								<div class="input-group-prepend">
+								  <div class="input-group-text">$</div>
+								</div>
+								<input type="text" class="form-control" id="precioTotalInput" placeholder="00,00">
+							  </div>
+							<div class="row">
+								<div class="btn-group">
+									<button type="submit" class="btn btn-primary" id="btnCalcular">Calcular
+										precio</button>
+									<button type="reset" class="btn btn-danger" id="btnCancelar">Cancelar</button>
+								</div>
+							</div>
+						</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	</div>
 
 
 	<!--INICIO CARD-->
 	<div class="mainContainer">
 		<div class="row">
 			<div class="container card shadow col-10 historialViajes" id="cardViajes">
-					<strong class="item-value-title">Viajes realizados</strong>
-				
+				<strong class="item-value-title">Detalles de la compra</strong>
+
 			</div>
 		</div>
 	</div>
@@ -158,15 +146,14 @@
 
 
 
-		<!--scripts-->
-		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-			crossorigin="anonymous"
-		></script>
-		<script src="./js/estaciones.js"></script>
-		<script src="./js/app.js"></script>
-		<script src="./js/historial.js"></script>
-	</body>
+	<!--scripts-->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+	<script src="./js/estaciones.js"></script>
+	<script src="./js/app.js"></script>
+	<script src="./js/historial.js"></script>
+</body>
+
 </html>
