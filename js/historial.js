@@ -1,8 +1,6 @@
 //get elements historial
 const cardViajes = document.getElementById("cardViajes");
 
-//array vacio para guardar viajes realizados
-const arrayViajesRealizados = [];
 
 //constructor viajes realizados
 class Viaje {
@@ -14,5 +12,3 @@ class Viaje {
 	}
 }
 
-//buscar elemento en el local storage
-const arrayBuscar = JSON.parse(localStorage.getItem("arrayViajesRealizados"));
