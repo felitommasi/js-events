@@ -96,7 +96,10 @@ form.addEventListener("submit", (e) => {
 	//console.log(arrayViajesRealizados);
 
 	//guardar el array en localstorage y convertirlo en JSON
-	localStorage.setItem("arrayViajesRealizados", JSON.stringify(arrayViajesRealizados));
+	localStorage.setItem(
+		"arrayViajesRealizados",
+		JSON.stringify(arrayViajesRealizados)
+	);
 
 	//cambio de estilo btn
 	btnCalcular.style.backgroundColor = "green";
@@ -115,7 +118,36 @@ form.addEventListener("submit", (e) => {
 		document.querySelector("#formNuevoViaje").reset();
 	});
 
-	//crear viaje para añadir al historial
-	//const viajes = new Viaje(partida, destino, valor);
+	function mostrarPorPantalla() {
+		//buscar elemento en el local storage
+		const arrayBuscar = JSON.parse(
+			localStorage.getItem("arrayViajesRealizados")
+		);
+		console.log(arrayBuscar);
+		//mostrar texto template literal
+		document.getElementById("cardViajes").innerHTML = `
+				<div class="item-value-title">
+					<strong>Detalles de la compra</strong>
+				</div>
+				<div class="container card shadow-sm row">
+					<div class="col-sm">
+						<p><strong>Partida:</strong></p>
+						<p>${partida}</p>
+					</div>
+					<div class="col-sm">
+						<p><strong>Destino:</strong></p>
+						<p>${destino}</p>
+					</div>
+					<div class="col-sm">
+						<p><strong>Valor del viaje:</strong></p>
+						<p>${valor}</p>
+					</div>
+					<div class="col-sm">
+						<p><strong>Tipo de boleto:</strong></p>
+						<p>${pasaje}</p>
+					</div> 
+				</div>`;
+		//console.log();
+	}
+	mostrarPorPantalla();
 });
-
