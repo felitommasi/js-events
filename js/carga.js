@@ -5,36 +5,99 @@ const inputSaldoActual = document.querySelector("#inputSaldoActual");
 const inputNuevoSaldo = document.querySelector("#inputNuevoSaldo");
 
 //nodos botones
-const cargaDiez = document.querySelector("#btnCarga1");
-const cargaVeinte = document.querySelector("#btnCarga2");
-const cargaCincuenta = document.querySelector("#btnCarga3");
-const cargaCien = document.querySelector("#btnCarga4");
-const cargaDoscientos = document.querySelector("#btnCarga5");
-const cargaQuinientos = document.querySelector("#btnCarga6");
+const btnCarga = document.querySelector("#btnCargar");
+//btn vaciar input carga
+const btnCancelar = document.querySelector("#btnBorrar").addEventListener("click", ()=>{inputNuevoSaldo.value = ""});
 
-//Ingreso de usuario
+//variables saldo
+let saldoActual = 100;
+let nuevoSaldo;
+
+//TODO: Ingreso de usuario
 window.addEventListener("load", () => {
 	Swal.fire({
 		animation: "slide-from-top",
 		title: "Ingresa tu número de tarjeta SUBE",
 		input: "number",
 		inputPlaceholder: "Ej. 1234-5678",
-        maxlength: 8,
+		maxlength: 8,
 		showCancelButton: false,
 		closeOnConfirm: false,
-        inputValidator: (value) => {
-            return new Promise((resolve) => {
-              if (value.length === 8) {
-                Swal.fire({ html: `<h2>¡Hola!</h2>
-                <br><p>Ya podés cargar tu saldo.</p>` });
-                resolve();
-              } else if (value.length < 8){
-                resolve('Verificá escribir correctamente los 8 dígitos');
-              } 
-            })
-        }
+		inputValidator: (value) => {
+			return new Promise((resolve) => {
+				if (value.length === 8) {
+					Swal.fire({
+						html: `<h2>¡Hola!</h2>
+                <br><p>Ya podés cargar tu saldo.</p>`,
+					});
+					resolve();
+				} else if (value.length < 8) {
+					resolve("Verificá escribir correctamente los 8 dígitos");
+				}
+			});
+		},
 	});
 
-    
-});
+	//!funciones y eventos carga saldo
+	//sumar 10
+	document.querySelector("#btnCarga1").addEventListener("click", () => {
+		sumar10(saldoActual);
+	});
+	function sumar10(n) {
+		nuevoSaldo = n + 10;
+		inputNuevoSaldo.value = nuevoSaldo;
+	}
 
+	//sumar 20
+	document.querySelector("#btnCarga2").addEventListener("click", () => {
+		sumar20(saldoActual);
+	});
+	function sumar20(n) {
+		nuevoSaldo = n + 20;
+		inputNuevoSaldo.value = nuevoSaldo;
+	}
+
+	//sumar 50
+	document.querySelector("#btnCarga3").addEventListener("click", () => {
+		sumar50(saldoActual);
+	});
+	function sumar50(n) {
+		nuevoSaldo = n + 50;
+		inputNuevoSaldo.value = nuevoSaldo;
+	}
+
+	//sumar 100
+	document.querySelector("#btnCarga4").addEventListener("click", () => {
+		sumar100(saldoActual);
+	});
+	function sumar100(n) {
+		nuevoSaldo = n + 100;
+		inputNuevoSaldo.value = nuevoSaldo;
+	}
+
+	//sumar 100
+	document.querySelector("#btnCarga5").addEventListener("click", () => {
+		sumar200(saldoActual);
+	});
+	function sumar200(n) {
+		nuevoSaldo = n + 200;
+		inputNuevoSaldo.value = nuevoSaldo;
+	}
+
+	//sumar 50
+	document.querySelector("#btnCarga6").addEventListener("click", () => {
+		sumar500(saldoActual);
+	});
+	function sumar500(n) {
+		nuevoSaldo = n + 500;
+		inputNuevoSaldo.value = nuevoSaldo;
+	}
+
+	btnCarga.addEventListener("click", () => {
+		Swal.fire({
+			icon: "success",
+			title: "¡Listo!",
+			text: `Tu nuevo saldo es $${nuevoSaldo}`,
+		});
+	});
+});
