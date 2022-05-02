@@ -9,10 +9,6 @@ const btnCarga = document.querySelector("#btnCargar");
 //btn vaciar input carga
 const btnCancelar = document.querySelector("#btnBorrar").addEventListener("click", ()=>{inputNuevoSaldo.value = ""});
 
-//variables saldo
-let saldoActual = 100;
-let nuevoSaldo;
-
 //TODO: Ingreso de usuario
 window.addEventListener("load", () => {
 	Swal.fire({
@@ -37,6 +33,10 @@ window.addEventListener("load", () => {
 			});
 		},
 	});
+
+    //variables saldo
+    let saldoActual = 100;
+    let nuevoSaldo;
 
 	//!funciones y eventos carga saldo
 	//sumar 10
@@ -99,5 +99,8 @@ window.addEventListener("load", () => {
 			title: "¡Listo!",
 			text: `Tu nuevo saldo es $${nuevoSaldo}`,
 		});
+        saldoActual = nuevoSaldo;
+        inputSaldoActual.value = nuevoSaldo;
+        inputNuevoSaldo.value = "";
 	});
 });
