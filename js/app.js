@@ -160,8 +160,6 @@ form.addEventListener("submit", (e) => {
 		document.querySelector("#formNuevoViaje").reset();
 		mostrarViajes(viaje);
 		//TODO: cambio de estilo btn
-		btnCalcular.style.backgroundColor = "blue";
-		btnCalcular.innerText = "Calcular precio";
 	});
 });
 

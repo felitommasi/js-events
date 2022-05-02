@@ -6,10 +6,12 @@ const inputNuevoSaldo = document.querySelector("#inputNuevoSaldo");
 
 //nodos botones
 const btnCarga = document.querySelector("#btnCargar");
-//btn vaciar input carga
-const btnCancelar = document.querySelector("#btnBorrar").addEventListener("click", ()=>{inputNuevoSaldo.value = ""});
+//btn vaciar input carga saldo
+const btnCancelar = document.querySelector("#btnBorrar").addEventListener("click", ()=>{
+    inputNuevoSaldo.value = "";
+    inputSaldoActual.value = 100;});
 
-//TODO: Ingreso de usuario
+//Alert Ingreso de usuario => carga saldo
 window.addEventListener("load", () => {
 	Swal.fire({
 		animation: "slide-from-top",
@@ -23,12 +25,16 @@ window.addEventListener("load", () => {
 			return new Promise((resolve) => {
 				if (value.length === 8) {
 					Swal.fire({
-						html: `<h2>¡Hola!</h2>
-                <br><p>Ya podés cargar tu saldo.</p>`,
+						icon: "success",
+						html: `<p>Ya podés cargar tu saldo.</p>`,
+						timer: 1200,
+						showConfirmButton: false,
 					});
 					resolve();
-				} else if (value.length < 8) {
+				} else if (value.length < 8 || value.length > 8) {
 					resolve("Verificá escribir correctamente los 8 dígitos");
+				}else{
+					resolve("Error");
 				}
 			});
 		},
@@ -96,7 +102,7 @@ window.addEventListener("load", () => {
 	btnCarga.addEventListener("click", () => {
 		Swal.fire({
 			icon: "success",
-			title: "¡Listo!",
+			title: "¡Se acreditó tu carga!",
 			text: `Tu nuevo saldo es $${nuevoSaldo}`,
 		});
         saldoActual = nuevoSaldo;

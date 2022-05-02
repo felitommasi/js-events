@@ -3,33 +3,46 @@
   margin: 0;
 }
 
-.mainContainer {
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.mainContainer, .mainContainerDos {
   margin: 5rem;
 }
-.mainContainer .btn-outline-secondary {
+.mainContainer .btn-outline-secondary, .mainContainerDos .btn-outline-secondary {
   margin-bottom: 0.7rem;
   border-radius: 3px;
 }
-.mainContainer .card {
+.mainContainer .card, .mainContainerDos .card {
   padding: 3rem 6rem 3rem 4rem;
 }
-.mainContainer .card .item-value-title {
+.mainContainer .card .item-value-title, .mainContainerDos .card .item-value-title {
   padding: 0;
   margin-bottom: 1.7rem;
   font-size: 2rem;
 }
-.mainContainer .card .input-group {
+.mainContainer .card .input-group, .mainContainerDos .card .input-group {
   padding: 0;
   width: 100%;
 }
-.mainContainer .card .btn-group {
+.mainContainer .card .btn-group, .mainContainerDos .card .btn-group {
   padding: 0;
 }
-.mainContainer .card .btn-group .btn {
+.mainContainer .card .btn-group .btn, .mainContainerDos .card .btn-group .btn {
   padding: 0.5rem 0;
   width: 50%;
   margin: 2rem 1rem 0 0;
   border-radius: 1rem;
+}
+
+.mainContainerDos .card {
+  align-items: center;
+}
+.mainContainerDos .card .btnCarga {
+  margin: 0.5rem !important;
+  padding: 0.7rem;
 }
 
 /*# sourceMappingURL=style.css.map */
