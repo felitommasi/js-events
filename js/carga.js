@@ -7,9 +7,10 @@ const inputNuevoSaldo = document.querySelector("#inputNuevoSaldo");
 //nodos botones
 const btnCarga = document.querySelector("#btnCargar");
 //btn vaciar input carga saldo
-const btnCancelar = document.querySelector("#btnBorrar").addEventListener("click", ()=>{
-    inputNuevoSaldo.value = "";
-    inputSaldoActual.value = 100;});
+const btnCancelar = document.querySelector("#btnBorrar").addEventListener("click", () => {
+		inputNuevoSaldo.value = "";
+		inputSaldoActual.value = 100;
+	});
 
 //Alert Ingreso de usuario => carga saldo
 window.addEventListener("load", () => {
@@ -33,16 +34,16 @@ window.addEventListener("load", () => {
 					resolve();
 				} else if (value.length < 8 || value.length > 8) {
 					resolve("Verificá escribir correctamente los 8 dígitos");
-				}else{
+				} else {
 					resolve("Error");
 				}
 			});
 		},
 	});
 
-    //variables saldo
-    let saldoActual = 100;
-    let nuevoSaldo;
+	//variables saldo
+	let saldoActual = 100;
+	let nuevoSaldo;
 
 	//!funciones y eventos carga saldo
 	//sumar 10
@@ -100,13 +101,31 @@ window.addEventListener("load", () => {
 	}
 
 	btnCarga.addEventListener("click", () => {
+		let timerInterval;
 		Swal.fire({
-			icon: "success",
-			title: "¡Se acreditó tu carga!",
-			text: `Tu nuevo saldo es $${nuevoSaldo}`,
+			html: "Un momento, se esta procesando tu pago...",
+			timer: 2500,
+			timerProgressBar: true,
+			didOpen: () => {
+				Swal.showLoading();
+				const b = Swal.getHtmlContainer().querySelector("b");
+				timerInterval = setInterval(() => {
+					b.textContent = Swal.getTimerLeft();
+				}, 100);
+			},
+			willClose: () => {
+				clearInterval(timerInterval);
+			},
+			didClose: () => {
+				Swal.fire({
+					icon: "success",
+					title: "¡Se acreditó tu carga!",
+					text: `Tu nuevo saldo es $${nuevoSaldo}`,
+				});
+			},
 		});
-        saldoActual = nuevoSaldo;
-        inputSaldoActual.value = nuevoSaldo;
-        inputNuevoSaldo.value = "";
+		saldoActual = nuevoSaldo;
+		inputSaldoActual.value = nuevoSaldo;
+		inputNuevoSaldo.value = "";
 	});
 });

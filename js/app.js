@@ -37,33 +37,24 @@ function validaCampos() {
 
 //funcion pasaje solo ida
 function obtenerValorBoleto() {
-	if ((selecPartida.value == 1 && selecDestino.value == 1) && (selecPasaje.value == 1)){
+	if ((selecPartida.value == 1 && selecDestino.value == 1)  && (selecPasaje.value == 1)){
 		precioTotalInput.value = 50;
-		console.log(`el valor es 50`);
-	} else if ((selecPartida.value == 1 && selecDestino.value == 2) && (selecPasaje.value == 1)){
+	} else if (((selecPartida.value == 1 && selecDestino.value == 2) || (selecDestino.value == 1 && selecPartida.value == 2))  && (selecPasaje.value == 1)){
 		precioTotalInput.value = 70;
-		console.log(`el valor es 70`);
-	} else if ((selecPartida.value == 1 && selecDestino.value == 3) && (selecPasaje.value == 1)){
+	} else if (((selecPartida.value == 1 && selecDestino.value == 3) || (selecDestino.value == 1 && selecPartida.value == 3)) && (selecPasaje.value == 1)){
 		precioTotalInput.value = 90;
-		console.log(`el valor es 90`);
-	} else if ((selecPartida.value == 2 && selecDestino.value == 1) && (selecPasaje.value == 1)){
+	} else if (((selecPartida.value == 2 && selecDestino.value == 1) || (selecDestino.value == 2 && selecPartida.value == 1)) && (selecPasaje.value == 1)){
 		precioTotalInput.value = 70;
-		console.log(`el valor es 70`);
 	} else if ((selecPartida.value == 2 && selecDestino.value == 2) && (selecPasaje.value == 1)){
 		precioTotalInput.value = 50;
-		console.log(`el valor es 50`);
-	} else if ((selecPartida.value == 2 && selecDestino.value == 3) && (selecPasaje.value == 1)){
+	} else if (((selecPartida.value == 2 && selecDestino.value == 3) || (selecDestino.value == 2 && selecPartida.value == 3)) && (selecPasaje.value == 1)){
 		precioTotalInput.value = 70;
-		console.log(`el valor es 70`);
-	} else if (selecPartida.value == 3 && selecDestino.value == 1) {
+	} else if (((selecPartida.value == 3 && selecDestino.value == 1) || (selecDestino.value == 3 && selecPartida.value == 1)) && (selecPasaje.value == 1)){ 
 		precioTotalInput.value = 90;
-		console.log(`el valor es 90`);
-	} else if ((selecPartida.value == 3 && selecDestino.value == 2) && (selecPasaje.value == 1)){
+	} else if (((selecPartida.value == 3 && selecDestino.value == 2) || (selecDestino.value == 3 && selecPartida.value == 2)) && (selecPasaje.value == 1)){
 		precioTotalInput.value = 70;
-		console.log(`el valor es 70`);
 	} else if ((selecPartida.value == 3 && selecDestino.value == 3) && (selecPasaje.value == 1)){
 		precioTotalInput.value = 50;
-		console.log(`el valor es 50`);
 	} else {
 		console.log(`error`);
 	}
@@ -73,31 +64,22 @@ function obtenerValorBoleto() {
 function obtenerIdaYVuelta(){
 	if ((selecPartida.value == 1 && selecDestino.value == 1) && (selecPasaje.value == 2)){
 		precioTotalInput.value = 50 + (50*0.75);
-		console.log(precioTotalInput.value);
-	} else if ((selecPartida.value == 1 && selecDestino.value == 2) && (selecPasaje.value == 2)){
+	} else if (((selecPartida.value == 1 && selecDestino.value == 2) || (selecDestino.value == 1 && selecPartida.value == 2)) && (selecPasaje.value == 2)){
 		precioTotalInput.value = 70 + (70*0.75);
-		console.log(precioTotalInput.value);
-	} else if ((selecPartida.value == 1 && selecDestino.value == 3) && (selecPasaje.value == 2)){
+	} else if (((selecPartida.value == 1 && selecDestino.value == 3) || (selecDestino.value == 1 && selecPartida.value == 3)) && (selecPasaje.value == 2)){
 		precioTotalInput.value = 90 + (90*0.75);
-		console.log(precioTotalInput.value);
-	} else if ((selecPartida.value == 2 && selecDestino.value == 1) && (selecPasaje.value == 2)){
+	} else if (((selecPartida.value == 2 && selecDestino.value == 1) || (selecDestino.value == 2 && selecPartida.value == 1)) && (selecPasaje.value == 2)){
 		precioTotalInput.value = 70 + (70*0.75);
-		console.log(precioTotalInput.value);
 	} else if ((selecPartida.value == 2 && selecDestino.value == 2) && (selecPasaje.value == 2)){
 		precioTotalInput.value = 50 + (50*0.75);
-		console.log(precioTotalInput.value);
-	} else if ((selecPartida.value == 2 && selecDestino.value == 3) && (selecPasaje.value == 2)){
+	} else if (((selecPartida.value == 2 && selecDestino.value == 3) || (selecDestino.value == 2 && selecPartida.value == 3)) && (selecPasaje.value == 2)){
 		precioTotalInput.value = 70 + (70*0.75);
-		console.log(precioTotalInput.value);
-	} else if ((selecPartida.value == 3 && selecDestino.value == 1) && (selecPasaje.value == 2)){
+	} else if (((selecPartida.value == 3 && selecDestino.value == 1) || (selecDestino.value == 3 && selecPartida.value == 1)) && (selecPasaje.value == 2)){
 		precioTotalInput.value = 90 + (90*0.75);
-		console.log(precioTotalInput.value);
-	} else if ((selecPartida.value == 3 && selecDestino.value == 2) && (selecPasaje.value == 2)){
+	} else if (((selecPartida.value == 3 && selecDestino.value == 2) || (selecDestino.value == 3 && selecPartida.value == 2)) && (selecPasaje.value == 2)){
 		precioTotalInput.value = 70 + (70*0.75);
-		console.log(precioTotalInput.value);
 	} else if ((selecPartida.value == 3 && selecDestino.value == 3) && (selecPasaje.value == 2)){
 		precioTotalInput.value = 50 + (50*0.75);
-		console.log(precioTotalInput.value);
 	} else {
 		console.log(`error`);
 	}
@@ -217,5 +199,4 @@ function mostrarViajes(viaje){
 			</div>`; 
 	}); 
 }
-
  */
