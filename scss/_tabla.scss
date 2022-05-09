@@ -1,0 +1,29 @@
+.container{
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+
+    .section{
+        overflow: hidden;
+
+        #tablaHead{
+            height: 150px;
+            display: flex;
+            flex-direction: row;
+            width: fit-content !important;
+            align-items: baseline;
+
+            tr{
+                text-align: start;
+                width: 3rem;
+            }
+        }
+        
+        .textoHorizontal{
+            color:red;
+            transform: rotate(-90deg);
+            width: 100px !important;
+        } 
+    }
+}
+

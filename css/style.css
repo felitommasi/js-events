@@ -46,4 +46,29 @@ body {
   padding: 0.7rem;
 }
 
+.container {
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+}
+.container .section {
+  overflow: hidden;
+}
+.container .section #tablaHead {
+  height: 150px;
+  display: flex;
+  flex-direction: row;
+  width: fit-content !important;
+  align-items: baseline;
+}
+.container .section #tablaHead tr {
+  text-align: start;
+  width: 3rem;
+}
+.container .section .textoHorizontal {
+  color: red;
+  transform: rotate(-90deg);
+  width: 100px !important;
+}
+
 /*# sourceMappingURL=style.css.map */

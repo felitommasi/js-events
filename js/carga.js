@@ -7,10 +7,8 @@ const inputNuevoSaldo = document.querySelector("#inputNuevoSaldo");
 //nodos botones
 const btnCarga = document.querySelector("#btnCargar");
 //btn vaciar input carga saldo
-const btnCancelar = document.querySelector("#btnBorrar").addEventListener("click", () => {
-		inputNuevoSaldo.value = "";
-		inputSaldoActual.value = 100;
-	});
+const btnBorrarInputs = document.getElementById("btnBorrarInputs");
+
 
 //Alert Ingreso de usuario => carga saldo
 window.addEventListener("load", () => {
@@ -44,6 +42,12 @@ window.addEventListener("load", () => {
 	//variables saldo
 	let saldoActual = 100;
 	let nuevoSaldo;
+
+	//borrar inputs y volver al valor por defecto
+	btnBorrarInputs.addEventListener("click", () => {
+			inputNuevoSaldo.value = "";
+			inputSaldoActual.value = 100;
+		});
 
 	//!funciones y eventos carga saldo
 	//sumar 10

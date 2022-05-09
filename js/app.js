@@ -1,5 +1,5 @@
 //!get form elements
-const form = document.getElementById("formNuevoViaje");
+const formulario = document.getElementById("formCompraViaje");
 const selecPasaje = document.getElementById("selecPasaje");
 const selecPartida = document.getElementById("selectPartida");
 const selecDestino = document.getElementById("selectDestino");
@@ -37,23 +37,59 @@ function validaCampos() {
 
 //funcion pasaje solo ida
 function obtenerValorBoleto() {
-	if ((selecPartida.value == 1 && selecDestino.value == 1)  && (selecPasaje.value == 1)){
+	if (
+		selecPartida.value == 1 &&
+		selecDestino.value == 1 &&
+		selecPasaje.value == 1
+	) {
 		precioTotalInput.value = 50;
-	} else if (((selecPartida.value == 1 && selecDestino.value == 2) || (selecDestino.value == 1 && selecPartida.value == 2))  && (selecPasaje.value == 1)){
+	} else if (
+		((selecPartida.value == 1 && selecDestino.value == 2) ||
+			(selecDestino.value == 1 && selecPartida.value == 2)) &&
+		selecPasaje.value == 1
+	) {
 		precioTotalInput.value = 70;
-	} else if (((selecPartida.value == 1 && selecDestino.value == 3) || (selecDestino.value == 1 && selecPartida.value == 3)) && (selecPasaje.value == 1)){
+	} else if (
+		((selecPartida.value == 1 && selecDestino.value == 3) ||
+			(selecDestino.value == 1 && selecPartida.value == 3)) &&
+		selecPasaje.value == 1
+	) {
 		precioTotalInput.value = 90;
-	} else if (((selecPartida.value == 2 && selecDestino.value == 1) || (selecDestino.value == 2 && selecPartida.value == 1)) && (selecPasaje.value == 1)){
+	} else if (
+		((selecPartida.value == 2 && selecDestino.value == 1) ||
+			(selecDestino.value == 2 && selecPartida.value == 1)) &&
+		selecPasaje.value == 1
+	) {
 		precioTotalInput.value = 70;
-	} else if ((selecPartida.value == 2 && selecDestino.value == 2) && (selecPasaje.value == 1)){
+	} else if (
+		selecPartida.value == 2 &&
+		selecDestino.value == 2 &&
+		selecPasaje.value == 1
+	) {
 		precioTotalInput.value = 50;
-	} else if (((selecPartida.value == 2 && selecDestino.value == 3) || (selecDestino.value == 2 && selecPartida.value == 3)) && (selecPasaje.value == 1)){
+	} else if (
+		((selecPartida.value == 2 && selecDestino.value == 3) ||
+			(selecDestino.value == 2 && selecPartida.value == 3)) &&
+		selecPasaje.value == 1
+	) {
 		precioTotalInput.value = 70;
-	} else if (((selecPartida.value == 3 && selecDestino.value == 1) || (selecDestino.value == 3 && selecPartida.value == 1)) && (selecPasaje.value == 1)){ 
+	} else if (
+		((selecPartida.value == 3 && selecDestino.value == 1) ||
+			(selecDestino.value == 3 && selecPartida.value == 1)) &&
+		selecPasaje.value == 1
+	) {
 		precioTotalInput.value = 90;
-	} else if (((selecPartida.value == 3 && selecDestino.value == 2) || (selecDestino.value == 3 && selecPartida.value == 2)) && (selecPasaje.value == 1)){
+	} else if (
+		((selecPartida.value == 3 && selecDestino.value == 2) ||
+			(selecDestino.value == 3 && selecPartida.value == 2)) &&
+		selecPasaje.value == 1
+	) {
 		precioTotalInput.value = 70;
-	} else if ((selecPartida.value == 3 && selecDestino.value == 3) && (selecPasaje.value == 1)){
+	} else if (
+		selecPartida.value == 3 &&
+		selecDestino.value == 3 &&
+		selecPasaje.value == 1
+	) {
 		precioTotalInput.value = 50;
 	} else {
 		console.log(`error`);
@@ -61,25 +97,61 @@ function obtenerValorBoleto() {
 }
 
 //funcion pasaje ida y vuelta (pasaje de vuelta 25% de descuento)
-function obtenerIdaYVuelta(){
-	if ((selecPartida.value == 1 && selecDestino.value == 1) && (selecPasaje.value == 2)){
-		precioTotalInput.value = 50 + (50*0.75);
-	} else if (((selecPartida.value == 1 && selecDestino.value == 2) || (selecDestino.value == 1 && selecPartida.value == 2)) && (selecPasaje.value == 2)){
-		precioTotalInput.value = 70 + (70*0.75);
-	} else if (((selecPartida.value == 1 && selecDestino.value == 3) || (selecDestino.value == 1 && selecPartida.value == 3)) && (selecPasaje.value == 2)){
-		precioTotalInput.value = 90 + (90*0.75);
-	} else if (((selecPartida.value == 2 && selecDestino.value == 1) || (selecDestino.value == 2 && selecPartida.value == 1)) && (selecPasaje.value == 2)){
-		precioTotalInput.value = 70 + (70*0.75);
-	} else if ((selecPartida.value == 2 && selecDestino.value == 2) && (selecPasaje.value == 2)){
-		precioTotalInput.value = 50 + (50*0.75);
-	} else if (((selecPartida.value == 2 && selecDestino.value == 3) || (selecDestino.value == 2 && selecPartida.value == 3)) && (selecPasaje.value == 2)){
-		precioTotalInput.value = 70 + (70*0.75);
-	} else if (((selecPartida.value == 3 && selecDestino.value == 1) || (selecDestino.value == 3 && selecPartida.value == 1)) && (selecPasaje.value == 2)){
-		precioTotalInput.value = 90 + (90*0.75);
-	} else if (((selecPartida.value == 3 && selecDestino.value == 2) || (selecDestino.value == 3 && selecPartida.value == 2)) && (selecPasaje.value == 2)){
-		precioTotalInput.value = 70 + (70*0.75);
-	} else if ((selecPartida.value == 3 && selecDestino.value == 3) && (selecPasaje.value == 2)){
-		precioTotalInput.value = 50 + (50*0.75);
+function obtenerIdaYVuelta() {
+	if (
+		selecPartida.value == 1 &&
+		selecDestino.value == 1 &&
+		selecPasaje.value == 2
+	) {
+		precioTotalInput.value = 50 + 50 * 0.75;
+	} else if (
+		((selecPartida.value == 1 && selecDestino.value == 2) ||
+			(selecDestino.value == 1 && selecPartida.value == 2)) &&
+		selecPasaje.value == 2
+	) {
+		precioTotalInput.value = 70 + 70 * 0.75;
+	} else if (
+		((selecPartida.value == 1 && selecDestino.value == 3) ||
+			(selecDestino.value == 1 && selecPartida.value == 3)) &&
+		selecPasaje.value == 2
+	) {
+		precioTotalInput.value = 90 + 90 * 0.75;
+	} else if (
+		((selecPartida.value == 2 && selecDestino.value == 1) ||
+			(selecDestino.value == 2 && selecPartida.value == 1)) &&
+		selecPasaje.value == 2
+	) {
+		precioTotalInput.value = 70 + 70 * 0.75;
+	} else if (
+		selecPartida.value == 2 &&
+		selecDestino.value == 2 &&
+		selecPasaje.value == 2
+	) {
+		precioTotalInput.value = 50 + 50 * 0.75;
+	} else if (
+		((selecPartida.value == 2 && selecDestino.value == 3) ||
+			(selecDestino.value == 2 && selecPartida.value == 3)) &&
+		selecPasaje.value == 2
+	) {
+		precioTotalInput.value = 70 + 70 * 0.75;
+	} else if (
+		((selecPartida.value == 3 && selecDestino.value == 1) ||
+			(selecDestino.value == 3 && selecPartida.value == 1)) &&
+		selecPasaje.value == 2
+	) {
+		precioTotalInput.value = 90 + 90 * 0.75;
+	} else if (
+		((selecPartida.value == 3 && selecDestino.value == 2) ||
+			(selecDestino.value == 3 && selecPartida.value == 2)) &&
+		selecPasaje.value == 2
+	) {
+		precioTotalInput.value = 70 + 70 * 0.75;
+	} else if (
+		selecPartida.value == 3 &&
+		selecDestino.value == 3 &&
+		selecPasaje.value == 2
+	) {
+		precioTotalInput.value = 50 + 50 * 0.75;
 	} else {
 		console.log(`error`);
 	}
@@ -89,20 +161,19 @@ function obtenerIdaYVuelta(){
 const arrayViajesRealizados = [];
 
 //calcular valor viaje
-form.addEventListener("submit", (e) => {
+formulario.addEventListener("submit", (e) => {
 	//detener envio del formulario
 	e.preventDefault();
 
 	//validacion campos
 	validaCampos();
-	
+
 	//mostrar valor boleto en pantalla
-	if(selecPasaje.value == 1){
+	if (selecPasaje.value == 1) {
 		obtenerValorBoleto();
-	} else if(selecPasaje.value == 2){
+	} else if (selecPasaje.value == 2) {
 		obtenerIdaYVuelta();
-	} 
-	
+	}
 
 	//obtener texto de los select para mostrar en pantalla en historial
 	const pasaje = selecPasaje.options[selecPasaje.selectedIndex].text;
@@ -116,7 +187,6 @@ form.addEventListener("submit", (e) => {
 
 	//pushear al array
 	arrayViajesRealizados.push(viaje);
-	
 
 	//guardar el array en localstorage y convertirlo en JSON
 	localStorage.setItem(
@@ -139,16 +209,16 @@ form.addEventListener("submit", (e) => {
 			timer: 1500,
 		});
 		//vaciar inputs
-		document.querySelector("#formNuevoViaje").reset();
+		formulario.reset();
 		mostrarViajes(viaje);
 		//TODO: cambio de estilo btn
 	});
 });
 
 //mostrar historial de viajes
-function mostrarViajes(viaje){
-	let div = document.createElement('div');
-	div.className = 'container card shadow-sm row';
+function mostrarViajes(viaje) {
+	let div = document.createElement("div");
+	div.className = "container card shadow-sm row";
 	div.innerHTML = `
 			<p><strong>Partida: </strong>${viaje.partida}</p>	
 			<p><strong>Destino: </strong>${viaje.destino}</p>	
@@ -159,44 +229,3 @@ function mostrarViajes(viaje){
 }
 
 
-
-
-
-
-
-
-
-
-
-//function mostrarViajes() {
-	//buscar elemento en el local storage
-/* 	const arrayBuscar = JSON.parse(localStorage.getItem("arrayViajesRealizados"));
-	console.log(`array buscar ${arrayBuscar}`);
-	console.log(`array viajes ${arrayViajesRealizados}`); */
-	//mostrar texto template literal
-/* 	arrayViajesRealizados.forEach(el => {
-		document.getElementById("cardViajes").innerHTML = `
-			<div class="item-value-title">
-				<strong>Detalles de la compra</strong>
-			</div>
-			<div class="container card shadow-sm row">
-				<div class="col-sm">
-					<p><strong>Partida:</strong></p>
-					<p>${el[0]}</p>
-				</div>
-				<div class="col-sm">
-					<p><strong>Destino:</strong></p>
-					<p>${el[1]}</p>
-				</div>
-				<div class="col-sm">
-					<p><strong>Valor del viaje:</strong></p>
-					<p>${el[2]}</p>
-				</div>
-				<div class="col-sm">
-					<p><strong>Tipo de boleto:</strong></p>
-					<p>${el[3]}</p>
-				</div> 
-			</div>`; 
-	}); 
-}
- */
