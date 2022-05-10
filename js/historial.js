@@ -1,7 +1,3 @@
-//get elements historial
-const cardViajes = document.getElementById("cardViajes");
-
-
 //constructor viajes realizados
 class Viaje {
 	constructor(pasaje, partida, destino, valor) {

@@ -6,8 +6,9 @@ const selecDestino = document.getElementById("selectDestino");
 const precioTotalInput = document.getElementById("precioTotalInput");
 const btnCalcular = document.getElementById("btnCalcular");
 const btnCancelar = document.getElementById("btnCancelar");
+const btnComprar = document.getElementById("btnComprar");
 const inputs = document.getElementsByClassName("msjeError");
-const historial = document.getElementById("cardViajes");
+const cardHistorialViajes = document.getElementById("cardViajes");
 
 //msje por pantalla en caso de correcto
 const validOk = () => {
@@ -26,13 +27,13 @@ const validError = () => {
 //!validacion form
 function validaCampos() {
 	//validar tipo pasaje
-	selecPasaje.value === 0 ? validError() : validOk();
+	parseInt(selecPasaje.value) === 0 ? validError() : validOk();
 
 	//validar partida
-	selecPartida.value === 0 ? validError() : validOk();
+	parseInt(selecPartida.value) === 0 ? validError() : validOk();
 
 	//validar destino
-	selecDestino.value === 0 ? validError() : validOk();
+	parseInt(selecDestino.value) === 0 ? validError() : validOk();
 }
 
 //funcion pasaje solo ida
@@ -160,9 +161,48 @@ function obtenerIdaYVuelta() {
 //array vacio para guardar viajes realizados
 const arrayViajesRealizados = [];
 
-//calcular valor viaje
-formulario.addEventListener("submit", (e) => {
-	//detener envio del formulario
+//funcion nuevo viaje y control evento
+document.getElementById("formCompraViaje").addEventListener("submit", nuevoViaje);
+
+function nuevoViaje(e) {
+	//parar envio de form
+	e.preventDefault();
+
+	//validacion campos
+	validaCampos();
+	//TODO: prevenir que se envie si es incorrecto
+
+	//recuperar info inputs
+	const pasaje = selecPasaje.options[selecPasaje.selectedIndex].text;
+	const partida = selecPartida.options[selecPartida.selectedIndex].text;
+	const destino = selecDestino.options[selecDestino.selectedIndex].text;
+	const valor = precioTotalInput.value;
+
+	//crear objeto viaje
+	const viaje = new Viaje(pasaje, partida, destino, valor);
+
+	//pushear al array
+	arrayViajesRealizados.push(viaje);
+	console.log(arrayViajesRealizados);
+
+	//guardar el array en local storage y convertirlo en JSON
+	localStorage.setItem("historial", JSON.stringify(arrayViajesRealizados));
+
+	//reiniciar valor inputs
+	formulario.reset();
+
+	//alert compra correcta
+	Swal.fire({
+		position: "top-end",
+		icon: "success",
+		title: "Listo, ¡buen viaje!",
+		showConfirmButton: false,
+		timer: 1500,
+	});
+}
+
+//Calcular valor y validar campos
+btnCalcular.addEventListener("click", (e) => {
 	e.preventDefault();
 
 	//validacion campos
@@ -174,6 +214,42 @@ formulario.addEventListener("submit", (e) => {
 	} else if (selecPasaje.value == 2) {
 		obtenerIdaYVuelta();
 	}
+});
+
+
+//recuperar info de local storage
+let historialViaje = JSON.parse(localStorage.getItem("historial"));
+//console.log(historialViaje)
+
+//funcion mostrar card viajes
+mostrarViajes();
+
+//mostrar historial de viajes por pantalla
+function mostrarViajes() {
+	historialViaje.forEach(id => {
+		if (id != undefined) {
+			let div = document.createElement("div");
+			div.className = "container card shadow-sm row";
+			div.innerHTML = `
+					<p><strong>Pasaje: </strong>${id.pasaje}</p>
+					<p><strong>Partida: </strong>${id.partida}</p>	
+					<p><strong>Destino: </strong>${id.destino}</p>	
+					<p><strong>Valor: </strong>$${id.valor}</p>		
+				`;
+			cardViajes.appendChild(div);
+		} else {
+			console.log("historial vacio");
+		}
+	});
+}
+
+
+
+/* //comprar pasaje
+ 
+//comprar pasaje
+btnComprar.addEventListener("click", (e) => {
+	e.preventDefault();
 
 	//obtener texto de los select para mostrar en pantalla en historial
 	const pasaje = selecPasaje.options[selecPasaje.selectedIndex].text;
@@ -183,49 +259,47 @@ formulario.addEventListener("submit", (e) => {
 
 	//crear objeto viaje
 	const viaje = new Viaje(pasaje, partida, destino, valor);
-	console.log(viaje);
+	//console.log(viaje);
 
 	//pushear al array
 	arrayViajesRealizados.push(viaje);
 
 	//guardar el array en localstorage y convertirlo en JSON
-	localStorage.setItem(
-		"arrayViajesRealizados",
-		JSON.stringify(arrayViajesRealizados)
-	);
+	localStorage.setItem("historial", JSON.stringify(viaje));
 
-	//cambio de estilo btn
-	btnCalcular.style.backgroundColor = "green";
-	btnCalcular.innerText = "Comprar";
-
-	//calcular valor
-	btnCalcular.addEventListener("click", () => {
-		e.preventDefault();
-		Swal.fire({
-			position: "top-end",
-			icon: "success",
-			title: "Listo, ¡buen viaje!",
-			showConfirmButton: false,
-			timer: 1500,
-		});
-		//vaciar inputs
-		formulario.reset();
-		mostrarViajes(viaje);
-		//TODO: cambio de estilo btn
+	Swal.fire({
+		position: "top-end",
+		icon: "success",
+		title: "Listo, ¡buen viaje!",
+		showConfirmButton: false,
+		timer: 1500,
 	});
+
+	//vaciar inputs
+	formulario.reset();
 });
 
-//mostrar historial de viajes
-function mostrarViajes(viaje) {
-	let div = document.createElement("div");
-	div.className = "container card shadow-sm row";
-	div.innerHTML = `
-			<p><strong>Partida: </strong>${viaje.partida}</p>	
-			<p><strong>Destino: </strong>${viaje.destino}</p>	
-			<p><strong>Valor: </strong>$${viaje.valor}</p>	
-			<p><strong>Pasaje: </strong>${viaje.pasaje}</p>	
-	`;
-	cardViajes.appendChild(div);
+//crear card con local storage
+function mostrarViajes() {
+	historialViaje = JSON.parse(localStorage.getItem("historial"));
+	console.log(localStorage);
+	console.log(historialViaje)
+	
+		if (historialViaje !== null || undefined){
+			let div = document.createElement("div");
+			div.className = "container card shadow-sm row";
+			div.innerHTML = `
+				<p><strong>Partida: </strong>${el.partida}</p>	
+				<p><strong>Destino: </strong>${el.destino}</p>	
+				<p><strong>Valor: </strong>$${el.valor}</p>	
+				<p><strong>Pasaje: </strong>${el.pasaje}</p>	
+			`;
+			cardViajes.appendChild(div);
+		}else{
+			console.log('historial vacio');
+		}
+
 }
-
-
+//mostrar viajes del local storage
+mostrarViajes();
+ */
