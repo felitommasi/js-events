@@ -30,6 +30,7 @@ const pintarSelect = (arrayData) => {
 	for (let i = 0; i < arrayData.length; i++) {
 		let textoSelect = arrayData[i].estacion;
 		document.querySelector(".optionEstacionPartida").innerHTML = textoSelect;
+		console.log(textoSelect);
 	}
 }
 
@@ -246,7 +247,7 @@ btnCalcular.addEventListener("click", (e) => {
 let historialViaje = JSON.parse(localStorage.getItem("historial"));
 //console.log(historialViaje)
 
-/* //mostrar historial de viajes por pantalla
+///mostrar historial de viajes por pantalla
 function mostrarViajes() {
 	historialViaje.forEach((id) => {
 		if (id != undefined) {
@@ -266,4 +267,3 @@ function mostrarViajes() {
 }
 //funcion mostrar card viajes
 mostrarViajes();
- */
